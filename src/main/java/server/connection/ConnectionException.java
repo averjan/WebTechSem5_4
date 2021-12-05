@@ -1,4 +1,4 @@
-package server.dao.connection;
+package server.connection;
 
 public class ConnectionException extends RuntimeException {
 

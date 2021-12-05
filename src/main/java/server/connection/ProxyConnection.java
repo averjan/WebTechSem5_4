@@ -1,4 +1,4 @@
-package server.dao.connection;
+package server.connection;
 
 import java.sql.*;
 import java.util.Map;
