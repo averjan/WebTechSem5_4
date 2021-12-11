@@ -1,5 +1,6 @@
 package server.service;
 
+import server.dao.DAOFactory;
 import server.service.impl.ApartmentServiceImpl;
 import server.service.impl.RoleServiceImpl;
 import server.service.impl.UserOrderServiceImpl;
@@ -10,25 +11,25 @@ import server.service.services.UserOrderService;
 import server.service.services.UserService;
 
 public class ServiceFactory {
-    static final ServiceFactory instance = new ServiceFactory();
+    private final DAOFactory daoFactory;
 
-    public static ServiceFactory getInstance() {
-        return ServiceFactory.instance;
+    public ServiceFactory(DAOFactory daoFactory) {
+        this.daoFactory = daoFactory;
     }
 
     public ApartmentService getApartmentService() {
-        return new ApartmentServiceImpl();
+        return new ApartmentServiceImpl(this.daoFactory);
     }
 
     public RoleService getRoleService() {
-        return new RoleServiceImpl();
+        return new RoleServiceImpl(this.daoFactory);
     }
 
     public UserService getUserService() {
-        return new UserServiceImpl();
+        return new UserServiceImpl(this.daoFactory);
     }
 
     public UserOrderService getUserOrderService() {
-        return new UserOrderServiceImpl();
+        return new UserOrderServiceImpl(this.daoFactory);
     }
 }

@@ -50,8 +50,8 @@ public class ApartmentDAOImpl extends AbstractDAO<Apartment> implements Apartmen
     }
 
     @Override
-    public void updateStatus(Apartment apartment, String status) throws DAOException {
-        executeUpdate(UPDATE_APARTMENT_STATUS_WHERE_ID, status, apartment.getId());
+    public void updateStatus(int id, String status) throws DAOException {
+        executeUpdate(UPDATE_APARTMENT_STATUS_WHERE_ID, status, id);
     }
 
     @Override

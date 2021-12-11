@@ -12,26 +12,26 @@ import server.connection.ProxyConnection;
 import server.connection.ConnectionPool;
 import server.exception.DAOException;
 
-public class DaoFactory {
+public class DAOFactory {
     private final ProxyConnection connection;
 
-    public UserDAO getUserDao() {
+    public UserDAO getUserDAO() {
         return new UserDAOImpl(connection);
     }
 
-    public RoleDAO getRoleDao() {
+    public RoleDAO getRoleDAO() {
         return new RoleDAOImpl(connection);
     }
 
-    public UserOrderDAO getUserOrderDao() {
+    public UserOrderDAO getUserOrderDAO() {
         return new UserOrderDAOImpl(connection);
     }
 
-    public ApartmentDAO getApartmentDao() {
+    public ApartmentDAO getApartmentDAO() {
         return new ApartmentDAOImpl(connection);
     }
 
-    private DaoFactory(ConnectionPool pool) throws DAOException {
+    private DAOFactory(ConnectionPool pool) throws DAOException {
         this.connection = pool.getConnection();
     }
 }
