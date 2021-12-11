@@ -1,4 +1,43 @@
 package server.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Identifiable, Serializable {
+    private int id;
+    private String email;
+    private String password;
+    private int roleId;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
 }

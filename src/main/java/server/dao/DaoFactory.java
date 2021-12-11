@@ -8,30 +8,30 @@ import server.dao.impl.ApartmentDAOImpl;
 import server.dao.impl.RoleDAOImpl;
 import server.dao.impl.UserDAOImpl;
 import server.dao.impl.UserOrderDAOImpl;
+import server.connection.ProxyConnection;
+import server.connection.ConnectionPool;
+import server.exception.DAOException;
 
 public class DaoFactory {
-    private static final DaoFactory instance = new DaoFactory();
+    private final ProxyConnection connection;
 
     public UserDAO getUserDao() {
-        return new UserDAOImpl();
+        return new UserDAOImpl(connection);
     }
 
     public RoleDAO getRoleDao() {
-        return new RoleDAOImpl();
+        return new RoleDAOImpl(connection);
     }
 
     public UserOrderDAO getUserOrderDao() {
-        return new UserOrderDAOImpl();
+        return new UserOrderDAOImpl(connection);
     }
 
     public ApartmentDAO getApartmentDao() {
-        return new ApartmentDAOImpl();
+        return new ApartmentDAOImpl(connection);
     }
 
-    private DaoFactory() {
-    }
-
-    public static DaoFactory getInstance() {
-        return DaoFactory.instance;
+    private DaoFactory(ConnectionPool pool) throws DAOException {
+        this.connection = pool.getConnection();
     }
 }
