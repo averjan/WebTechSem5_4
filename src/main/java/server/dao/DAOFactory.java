@@ -31,7 +31,7 @@ public class DAOFactory {
         return new ApartmentDAOImpl(connection);
     }
 
-    private DAOFactory(ConnectionPool pool) throws DAOException {
-        this.connection = pool.getConnection();
+    private DAOFactory() throws DAOException {
+        this.connection = ConnectionPool.getInstance().getConnection();
     }
 }

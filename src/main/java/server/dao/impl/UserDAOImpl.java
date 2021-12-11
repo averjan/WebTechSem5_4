@@ -1,5 +1,6 @@
 package server.dao.impl;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import server.dao.AbstractDAO;
 import server.dao.daos.UserDAO;
 import server.entity.User;
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
     private static final String TABLE_NAME = "users";
 
+    private static final String SELECT_USER_WHERE_EMAIL_AND_PASSWORD = "SELECT * FROM " + TABLE_NAME + " WHERE email=? and password=SHA1(?)";
     private static final String SELECT_USER_WHERE_EMAIL = "SELECT * FROM " + TABLE_NAME + " WHERE email=?";
     private static final String INSERT_USER = "INSERT INTO " + TABLE_NAME + " (email, password_hash, role_id) VALUES (?, ?, ?, ?)";
     private static final String DELETE_USER = "DELETE FROM " + TABLE_NAME + " WHERE id=?";
@@ -30,6 +32,11 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
     @Override
     public Optional<User> getByEmail(String email) throws DAOException {
         return executeForSingleResult(SELECT_USER_WHERE_EMAIL, email);
+    }
+
+    @Override
+    public Optional<User> getByEmailPassword(String email, String password) throws DAOException {
+        return executeForSingleResult(SELECT_USER_WHERE_EMAIL_AND_PASSWORD, email, DigestUtils.sha1Hex(password));
     }
 
     @Override
