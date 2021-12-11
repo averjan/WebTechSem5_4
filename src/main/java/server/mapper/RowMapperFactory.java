@@ -4,6 +4,10 @@ import server.entity.Apartment;
 import server.entity.Role;
 import server.entity.User;
 import server.entity.UserOrder;
+import server.mapper.impl.ApartmentRowMapper;
+import server.mapper.impl.RoleRowMapper;
+import server.mapper.impl.UserOrderRowMapper;
+import server.mapper.impl.UserRowMapper;
 
 public class RowMapperFactory {
     static final RowMapperFactory instance = new RowMapperFactory();
@@ -13,18 +17,18 @@ public class RowMapperFactory {
     }
 
     public RowMapper<User> getUserRowMapper() {
-        return null;
+        return new UserRowMapper();
     }
 
     public RowMapper<Role> getRoleRowMapper() {
-        return null;
+        return new RoleRowMapper();
     }
 
     public RowMapper<UserOrder> getUserOrderRowMapper() {
-        return null;
+        return new UserOrderRowMapper();
     }
 
     public RowMapper<Apartment> getApartmentRowMapper() {
-        return null;
+        return new ApartmentRowMapper();
     }
 }
