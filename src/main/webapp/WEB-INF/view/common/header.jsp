@@ -20,9 +20,9 @@
 
 
     <form action=${pageContext.request.contextPath}/booking method="get">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="font-size: 20px">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-warning" style="font-size: 20px">
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
                     <a class="navbar-brand" style="font-size: 22px">
                         Booking
@@ -62,24 +62,24 @@
 
                             <li class="nav-item">
                                 <a class="nav-link active"
-                                   href="${pageContext.request.contextPath}/online-shop?${pageContext.request.queryString}&language=en">
+                                   href="${pageContext.request.contextPath}/booking?${pageContext.request.queryString}&language=en">
                                     EN
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="navbar-brand">
-                                    <img src="static/images/flags/EN.png" width="30" height="20"/>
+                                    <img src="img/us.png" width="30" height="30"/>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   href="${pageContext.request.contextPath}/online-shop?${pageContext.request.queryString}&language=ru">
+                                   href="${pageContext.request.contextPath}/booking?${pageContext.request.queryString}&language=ru">
                                     RU
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="navbar-brand">
-                                    <img src="static/images/flags/RU.png" width="30" height="20"/>
+                                    <img src="img/ru.png" width="30" height="30"/>
                                 </a>
                             </li>
                         </c:when>
@@ -87,25 +87,25 @@
 
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   href="${pageContext.request.contextPath}/online-shop?${pageContext.request.queryString}&language=en">
+                                   href="${pageContext.request.contextPath}/booking?${pageContext.request.queryString}&language=en">
                                     EN
                                 </a>
 
                             </li>
                             <li class="nav-item">
                                 <a class="navbar-brand">
-                                    <img src="static/images/flags/EN.png" width="30" height="20"/>
+                                    <img src="img/us.png" width="30" height="30"/>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active"
-                                   href="${pageContext.request.contextPath}/online-shop?${pageContext.request.queryString}&language=ru">
+                                   href="${pageContext.request.contextPath}/booking?${pageContext.request.queryString}&language=ru">
                                     RU
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="navbar-brand">
-                                    <img src="static/images/flags/RU.png" width="30" height="20"/>
+                                    <img src="img/ru.png" width="30" height="30"/>
                                 </a>
                             </li>
                         </c:when>
@@ -114,7 +114,7 @@
                     <c:choose>
                         <c:when test="${sessionScope.user == null}">
                             <li class="nav-item">
-                                <button class="btn btn-secondary my-2 my-sm-0" type="submit" name="command"
+                                <button class="btn btn-primary my-2 my-sm-0" type="submit" name="command"
                                         value="openSignin">
                                     <fmt:message bundle="${loc}" key="language.logIn"/>
                                 </button>

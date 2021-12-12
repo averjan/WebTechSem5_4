@@ -18,14 +18,9 @@
 <fmt:setBundle basename="localization.language" var="loc"/>
 <fmt:setBundle basename="information" var="info"/>
 
-<div class="container">
-    <h3 class="pb-3 my-sm-3">Booking.</h3>
-    <div class="row justify-content-center">
-        <img src="static/images/hotel.jpg" class="img-fluid" width="1000" height="400">
-    </div>
-
-    <div class="row justify-content-center">
-
+<div class="container h-100 flex-grow-2 align-content-center justify-content-center align-items-center">
+    <div class="row h-100 justify-content-center">
+        <h1 class="pb-3 my-sm-3 text-center text-lg title">Booking.</h1>
     </div>
 </div>
 </div>
