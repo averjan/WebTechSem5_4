@@ -22,7 +22,6 @@
 
             <c:forEach var="apartment" items="${apartments}">
                 <div class="my-lg-4">
-                    <div class="col-6"></div>
                     <div class="card text-center">
                         <div class="card-header">
                             <h5><c:out value="${apartment.status}"/>
@@ -35,21 +34,11 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <h5><c:out value="${apartment.number}"/></h5>
-                                    <c:if test="${sessionScope.user!=null }">
-                                        <div class="row justify-content-center">
-                                            <p><input type="button"  class="btn btn-primary" value="<fmt:message bundle="${loc}" key="language.arrange"/>"
-                                                      onClick='location.href="${pageContext.request.contextPath}/booking?command=addOrder&apartment_id=${apartment.id}"'></p>
-
-                                        </div>
-                                    </c:if>
-                                </div>
                                 <div class="col-md-8">
-                                    <p><fmt:message bundle="${loc}" key="language.description"/></p>
-                                    <p><fmt:message bundle="${loc}" key="language.apartmentNumber"/><c:out value=" "/><c:out value="${apartment.number}"/></p>
-                                    <p><fmt:message bundle="${loc}" key="language.numberOfRooms"/><c:out value=" "/><c:out value="${apartment.roomsNumber}"/></p>
-                                    <p><fmt:message bundle="${loc}" key="language.price"/><c:out value=" "/><c:out value="${apartment.price} "/><fmt:message bundle="${loc}" key="language.price"/></p>
+                                    <p><fmt:message bundle="${loc}" key="language.description"/><c:out value=":"/></p>
+                                    <p><fmt:message bundle="${loc}" key="language.apartmentNumber"/><c:out value=": "/><c:out value="${apartment.number}"/></p>
+                                    <p><fmt:message bundle="${loc}" key="language.numberOfRooms"/><c:out value=": "/><c:out value="${apartment.roomsNumber}"/></p>
+                                    <p><fmt:message bundle="${loc}" key="language.price"/><c:out value=": "/><c:out value="${apartment.price} "/><fmt:message bundle="${loc}" key="language.cur"/></p>
                                     <div class="container">
                                         <div class="row">
 
@@ -58,6 +47,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <c:if test="${sessionScope.user!=null }">
+                                        <div class="row justify-content-center">
+                                            <p><input type="button"  class="btn btn-primary" value="<fmt:message bundle="${loc}" key="language.arrange"/>"
+                                                      onClick='location.href="${pageContext.request.contextPath}/booking?command=addOrder&apartment_id=${apartment.id}"'></p>
+
+                                        </div>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>

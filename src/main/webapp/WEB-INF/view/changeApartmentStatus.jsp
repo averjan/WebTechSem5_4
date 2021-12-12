@@ -46,8 +46,10 @@
                     <div class="row mb-3">
                         <div class="col-sm">
                             <label for="status" class="form-label"><fmt:message bundle="${loc}" key="language.status"/></label>
-                            <input type="text" id="status" name="status" class="form-control"
-                                   placeholder="доступно"  maxlength="15" required>
+                            <select name="status" id="status" required>
+                                <option value="booked" selected="selected"><fmt:message bundle="${loc}" key="language.booked"/></option>
+                                <option value="available"><fmt:message bundle="${loc}" key="language.available"/></option>
+                            </select>
                         </div>
                     </div>
 

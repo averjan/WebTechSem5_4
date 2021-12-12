@@ -21,9 +21,6 @@ public class SignupCommand implements Command {
     private static final String EMAIL = "email";
     private static final String PASSWORD_FIRST = "password-first";
     private static final String PASSWORD_SECOND = "password-second";
-    private static final String NAME = "name";
-    private static final String SURNAME = "surname";
-    private static final String PHONE = "phone";
     private static final String MESSAGE = "message";
     private static final String ERROR = "error";
     private static final String OK = "ok";

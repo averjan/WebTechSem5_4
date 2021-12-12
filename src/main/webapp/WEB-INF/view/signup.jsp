@@ -42,34 +42,6 @@
 
 
             <form action="${pageContext.request.contextPath}/booking?command=signup" method="post">
-                <div class="row mb-3">
-                    <div class="col-sm mb-3">
-                        <label for="name" class="form-label"><fmt:message bundle="${loc}" key="language.name"/></label>
-                        <input type="text" id="name" name="name" class="form-control"
-                               placeholder="<fmt:message bundle="${loc}" key="language.name"/>" required maxlength="45"
-                               pattern="\b[A-ZА-Я].*?\b">
-                    </div>
-                    <div class="col-sm">
-                        <label for="surname" class="form-label"><fmt:message bundle="${loc}"
-                                                                             key="language.surname"/></label>
-                        <input type="text" id="surname" name="surname" class="form-control"
-                               placeholder="<fmt:message bundle="${loc}" key="language.surname"/>" required
-                               maxlength="45"
-                               pattern="\b[A-ZА-Я].*?\b">
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-
-                    <div class="col-sm">
-                        <label for="phone" class="form-label"><fmt:message bundle="${loc}"
-                                                                           key="language.mobilePhone"/></label>
-                        <input type="text" id="phone" name="phone" class="form-control"
-                               placeholder="<fmt:message bundle="${loc}" key="language.mobilePhone"/>" required
-                               pattern="\+?375\d{6,11}$" maxlength="15"
-                        >
-                    </div>
-                </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label"><fmt:message bundle="${loc}"
@@ -81,19 +53,18 @@
                     <label for="password-first" class="form-label"><fmt:message bundle="${loc}"
                                                                                 key="language.password"/></label>
                     <input type="password" class="form-control" name="password-first" id="password-first"
-                           placeholder="password" required
+                           required
                            minlength="8">
                 </div>
                 <div class="mb-3">
                     <label for="password-second" class="form-label"><fmt:message bundle="${loc}"
                                                                                  key="language.confirmPassword"/></label>
                     <input type="password" class="form-control" name="password-second" id="password-second"
-                           placeholder="password" required
+                           required
                            minlength="8">
                 </div>
 
-                <button class="btn btn-primary" type="submit"><fmt:message bundle="${loc}"
-                                                                           key="language.logUp"/></button>
+                <button class="btn btn-primary" type="submit"><fmt:message bundle="${loc}" key="language.logUp"/></button>
 
             </form>
             <hr class="dropdown-divider">

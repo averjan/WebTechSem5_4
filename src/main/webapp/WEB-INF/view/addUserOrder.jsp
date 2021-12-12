@@ -38,87 +38,89 @@
             <form action="${pageContext.request.contextPath}/booking?command=confirmUserOrder&apartment_id=<%= request.getParameter("apartment_id") %>" method="post">
                 
                 <div class=>
-                    <h1>Enter</h1>
+                    <h1><fmt:message bundle="${loc}" key="language.startTime"/></h1>
                     <div >
-                        <label for="year" class="form-label"><fmt:message bundle="${loc}" key="language.year"/></label>
+                        <label for="year" class="form-label"><fmt:message bundle="${loc}" key="language.year"/>:</label>
                         <div class="input-group w-50">
                             <input type="text" class="form-control" id="year" name="year"
                                    placeholder="2021" pattern="^[0-9]{4}$" maxlength="4" required></div>
                     </div>
 
-                    <div >
-                        <label for="month" class="form-label"><fmt:message bundle="${loc}" key="language.month"/></label>
+                    <div>
+                        <label for="month" class="form-label"><fmt:message bundle="${loc}" key="language.month"/>:</label>
                         <div class="input-group w-50">
                             <input type="text" class="form-control" id="month" name="month"
-                                   placeholder="12"  maxlength="2" pattern="^([1-9]|1[012])$" required></div>
+                                   placeholder="12"  maxlength="2" pattern="^([1-9]|1[012])$" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="day" class="form-label"><fmt:message bundle="${loc}" key="language.day"/>:</label>
+
+                        <div class="input-group w-100">
+                            <input type="text"    class="form-control" id="day" name="date" placeholder="day" pattern="^(([1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$" required>
+                        </div>
                     </div>
 
                     <div >
-                        <label for="day" class="form-label"><fmt:message bundle="${loc}"
-                                                                         key="language.day"/></label>
+                        <label for="hour" class="form-label"><fmt:message bundle="${loc}" key="language.hour"/>:</label>
 
                         <div class="input-group w-100">
-                            <input type="text"    class="form-control" id="day" name="date" placeholder="day" pattern="^(([1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$" required></div>
-                    </div>
-
-                    <div >
-                        <label for="hour" class="form-label"><fmt:message bundle="${loc}"
-                                                                          key="language.hour"/></label>
-
-                        <div class="input-group w-100">
-                            <input type="text"    class="form-control" id="hour" name="hour" placeholder="hour" pattern="^(([1-5]?([0-9])))$" maxlength="2" required></div>
+                            <input type="text"    class="form-control" id="hour" name="hour" placeholder="hour" pattern="^(([1-5]?([0-9])))$" maxlength="2" required>
+                        </div>
                     </div>
 
 
-                    <div >
-                        <label for="minute" class="form-label"><fmt:message bundle="${loc}"
-                                                                            key="language.minute"/></label>
+                    <div>
+                        <label for="minute" class="form-label"><fmt:message bundle="${loc}" key="language.minute"/>:</label>
 
                         <div class="input-group w-100">
-                            <input type="text"  class="form-control" id="minute" name="minute" placeholder="minute" maxlength="2" pattern="^(([1-5]?([0-9])))$" required></div>
+                            <input type="text"  class="form-control" id="minute" name="minute" placeholder="minute" maxlength="2" pattern="^(([1-5]?([0-9])))$" required>
+                        </div>
                     </div>
 
                 </div>
 
                 <div >
-                    <h1>Outer</h1>
+                    <h1><fmt:message bundle="${loc}" key="language.endTime"/></h1>
                     <div >
-                        <label for="year" class="form-label"><fmt:message bundle="${loc}" key="language.year"/></label>
+                        <label for="year" class="form-label"><fmt:message bundle="${loc}" key="language.year"/>:</label>
                         <div class="input-group w-50">
                             <input type="text" class="form-control" id="year2" name="year2"
-                                   placeholder="2021" pattern="^[0-9]{4}$" maxlength="4" required></div>
+                                   placeholder="2021" pattern="^[0-9]{4}$" maxlength="4" required>
+                        </div>
                     </div>
 
                     <div >
-                        <label for="month" class="form-label"><fmt:message bundle="${loc}" key="language.month"/></label>
+                        <label for="month" class="form-label"><fmt:message bundle="${loc}" key="language.month"/>:</label>
                         <div class="input-group w-50">
                             <input type="text" class="form-control" id="month2" name="month2"
-                                   placeholder="12"  maxlength="2" pattern="^([1-9]|1[012])$" required></div>
+                                   placeholder="12"  maxlength="2" pattern="^([1-9]|1[012])$" required>
+                        </div>
                     </div>
 
                     <div >
-                        <label for="day" class="form-label"><fmt:message bundle="${loc}"
-                                                                         key="language.day"/></label>
-
+                        <label for="day" class="form-label"><fmt:message bundle="${loc}" key="language.day"/>:</label>
                         <div class="input-group w-100">
-                            <input type="text"    class="form-control" id="day2" name="date2" placeholder="day" pattern="^(([1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$" required></div>
+                            <input type="text"    class="form-control" id="day2" name="date2" placeholder="day" pattern="^(([1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$" required>
+                        </div>
                     </div>
 
                     <div >
-                        <label for="hour" class="form-label"><fmt:message bundle="${loc}"
-                                                                          key="language.hour"/></label>
+                        <label for="hour" class="form-label"><fmt:message bundle="${loc}" key="language.hour"/>:</label>
 
                         <div class="input-group w-100">
-                            <input type="text"    class="form-control" id="hour2" name="hour2" placeholder="hour" pattern="^(([1-5]?([0-9])))$" maxlength="2" required></div>
+                            <input type="text"    class="form-control" id="hour2" name="hour2" placeholder="hour" pattern="^(([1-5]?([0-9])))$" maxlength="2" required>
+                        </div>
                     </div>
 
 
                     <div >
-                        <label for="minute" class="form-label"><fmt:message bundle="${loc}"
-                                                                            key="language.minute"/></label>
+                        <label for="minute" class="form-label"><fmt:message bundle="${loc}" key="language.minute"/>:</label>
 
                         <div class="input-group w-100">
-                            <input type="text"  class="form-control" id="minute2" name="minute2" placeholder="minute" maxlength="2" pattern="^(([1-5]?([0-9])))$" required></div>
+                            <input type="text"  class="form-control" id="minute2" name="minute2" placeholder="minute" maxlength="2" pattern="^(([1-5]?([0-9])))$" required>
+                        </div>
                     </div>
                 </div>
                 

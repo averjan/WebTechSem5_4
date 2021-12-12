@@ -34,12 +34,12 @@
                     <thead>
                     <tr>
                         <th scope="col"><fmt:message bundle="${loc}" key="language.orderId"/></th>
-                        <th scope="col"><fmt:message bundle="${loc}" key="language.fullName"/></th>
-                        <th scope="col"><fmt:message bundle="${loc}" key="language.mobilePhone"/></th>
-                        <th scope="col"><fmt:message bundle="${loc}" key="language.dateTime"/></th>
-                        <th scope="col"><fmt:message bundle="${loc}" key="language.leaseDuration"/></th>
+                        <th scope="col"><fmt:message bundle="${loc}" key="language.emailAddress"/></th>
+                        <th scope="col"><fmt:message bundle="${loc}" key="language.startTime"/></th>
+                        <th scope="col"><fmt:message bundle="${loc}" key="language.endTime"/></th>
                         <th scope="col"><fmt:message bundle="${loc}" key="language.apartmentNumber"/></th>
                         <th scope="col"><fmt:message bundle="${loc}" key="language.status"/></th>
+                        <th scope="col"><fmt:message bundle="${loc}" key="language.apartmentStatus"/></th>
                     </tr>
                     </thead>
                     <c:forEach var="userOrder" items="${userOrders}">
@@ -54,7 +54,6 @@
                                         <c:set scope="request" var="informationNumberFlag" value="1"/>
                                     </c:if>
                                 </c:forEach>
-
                             </td>
                             <td><c:out value="${userOrder.startTime}"/></td>
                             <td><c:out value="${userOrder.endTime}"/></td>

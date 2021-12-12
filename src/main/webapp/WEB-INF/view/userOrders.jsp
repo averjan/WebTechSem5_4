@@ -29,11 +29,10 @@
                 <thead>
                 <tr>
                     <th scope="col"><fmt:message bundle="${loc}" key="language.dateTime"/></th>
-                    <th scope="col"><fmt:message bundle="${loc}" key="language.numberOfBeds"/></th>
+                    <th scope="col"><fmt:message bundle="${loc}" key="language.endTime"/></th>
                     <th scope="col"><fmt:message bundle="${loc}" key="language.numberOfRooms"/></th>
                     <th scope="col"><fmt:message bundle="${loc}" key="language.apartmentNumber"/></th>
                     <th scope="col"><fmt:message bundle="${loc}" key="language.price"/></th>
-                    <th scope="col"><fmt:message bundle="${loc}" key="language.type"/></th>
                     <th scope="col"><fmt:message bundle="${loc}" key="language.status"/></th>
                 </tr>
                 </thead>
@@ -46,7 +45,10 @@
                             <p> <c:out value="${userOrder.startTime}"/></p>
 
                         </td>
+                        <td class="text-primary">
+                            <p> <c:out value="${userOrder.endTime}"/></p>
 
+                        </td>
                         <td class="text-primary">
                             <c:forEach var="apartment" items="${apartments}">
                                 <c:if test="${userOrder.apartmentId == apartment.id}">
@@ -62,7 +64,7 @@
                             <c:forEach var="apartment" items="${apartments}">
                                 <c:if test="${userOrder.apartmentId == apartment.id}">
                                     <c:if test="${continueExecuting}">
-                                        <p><c:out value="${apartment.roomsNumber}"/></p>
+                                        <p><c:out value="${apartment.number}"/></p>
                                         <c:set var="continueExecuting" scope="request" value="false"/>
                                     </c:if>
                                 </c:if>
@@ -73,18 +75,7 @@
                             <c:forEach var="apartment" items="${apartments}">
                                 <c:if test="${userOrder.apartmentId == apartment.id}">
                                     <c:if test="${continueExecuting}">
-                                        <p><c:out value="${apartment.roomsNumber}"/></p>
-                                        <c:set var="continueExecuting" scope="request" value="false"/>
-                                    </c:if>
-                                </c:if>
-                            </c:forEach>
-                        </td>
-                        <c:set var="continueExecuting" scope="request" value="true"/>
-                        <td class="text-primary">
-                            <c:forEach var="apartment" items="${apartments}">
-                                <c:if test="${userOrder.apartmentId == apartment.id}">
-                                    <c:if test="${continueExecuting}">
-                                        <p><c:out value="${apartment.price} "/><fmt:message bundle="${loc}" key="language.price"/></p>
+                                        <p><c:out value="${apartment.price} "/><fmt:message bundle="${loc}" key="language.cur"/></p>
                                         <c:set var="continueExecuting" scope="request" value="false"/>
                                     </c:if>
                                 </c:if>

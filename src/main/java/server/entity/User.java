@@ -6,7 +6,16 @@ public class User implements Identifiable, Serializable {
     private int id;
     private String email;
     private String password;
+    private String phone;
     private int roleId;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public void setId(int id) {
         this.id = id;

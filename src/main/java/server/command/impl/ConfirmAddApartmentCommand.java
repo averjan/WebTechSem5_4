@@ -18,10 +18,8 @@ public class ConfirmAddApartmentCommand implements Command {
     private static final String PAGE = "command=addApartment";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
     private static final String STATUS = "status";
-    private static final String TYPE = "type";
     private static final String PRICE = "price";
-    private static final String NUMBER_OF_BEDS = "numberOfBeds";
-    private static final String NUMBER_OF_ROOMS  = "numberOfRooms";
+    private static final String NUMBER_OF_ROOMS  = "roomsNumber";
     private static final String APARTMENT_NUMBER = "apartmentNumber";
     private static final String MESSAGE_PARAMETER = "&message=";
     private static final String ERROR = "error";
