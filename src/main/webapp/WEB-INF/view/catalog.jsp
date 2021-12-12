@@ -18,12 +18,12 @@
         <fmt:setLocale value="${sessionScope.language}"/>
         <fmt:setBundle basename="localization" var="loc"/>
 
-        <div class="container">
+        <div class="container d-flex justify-content-around flex-wrap">
 
             <c:forEach var="apartment" items="${apartments}">
-                <div class="my-lg-4">
+                <div class="my-lg-2">
                     <div class="card text-center">
-                        <div class="card-header">
+                        <div class="card-header bg-success text-white">
                             <h5><c:out value="${apartment.status}"/>
                                 <c:if test="${sessionScope.role.name == 'admin'}">
                                     <a href="${pageContext.request.contextPath}/booking?command=changeApartmentStatus&apartmentId=${apartment.id}">
