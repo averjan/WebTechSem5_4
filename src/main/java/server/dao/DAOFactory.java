@@ -12,7 +12,7 @@ import server.connection.ProxyConnection;
 import server.connection.ConnectionPool;
 import server.exception.DAOException;
 
-public class DAOFactory {
+public class DAOFactory implements AutoCloseable {
     private final ProxyConnection connection;
 
     public UserDAO getUserDAO() {
@@ -31,7 +31,12 @@ public class DAOFactory {
         return new ApartmentDAOImpl(connection);
     }
 
-    private DAOFactory() throws DAOException {
+    public DAOFactory() throws DAOException {
         this.connection = ConnectionPool.getInstance().getConnection();
+    }
+
+    @Override
+    public void close() throws Exception {
+        this.connection.close();
     }
 }

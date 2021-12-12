@@ -8,8 +8,8 @@ import server.command.context.RequestManager;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class HomeCommand implements Command {
-    private static final String PAGE = "WEB-INF/view/home.jsp";
+public class ChangeApartmentStatusCommand implements Command {
+    private static final String PAGE = "WEB-INF/view/changeApartmentStatus.jsp";
 
     @Override
     public CommandResult execute(RequestManager request, HttpServletResponse response) {

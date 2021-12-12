@@ -4,10 +4,8 @@ import server.entity.Identifiable;
 import server.exception.DAOException;
 import server.mapper.RowMapper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +43,14 @@ public abstract class AbstractDAO<T extends Identifiable> implements DAO<T>{
         return preparedStatement;
     }
 
+    protected PreparedStatement createUpdateStatement(String query, Object... params) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        for (int i = 0; i < params.length; i++) {
+            preparedStatement.setObject(i + 1, params[i]);
+        }
+        return preparedStatement;
+    }
+
     protected Optional<T> executeForSingleResult(String query, Object... params) throws DAOException {
         List<T> entities = this.executeQuery(query, params);
         if (entities.size() > 1) {
@@ -57,7 +63,7 @@ public abstract class AbstractDAO<T extends Identifiable> implements DAO<T>{
     }
 
     protected void executeUpdate(String query, Object... params) throws DAOException {
-        try (PreparedStatement statement = createStatement(query, params)) {
+        try (PreparedStatement statement = createUpdateStatement(query, params)) {
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
@@ -66,7 +72,7 @@ public abstract class AbstractDAO<T extends Identifiable> implements DAO<T>{
 
     protected int executeInsert(String query, Object... params) throws DAOException {
         int result = 0;
-        try (PreparedStatement statement = createStatement(query, params)) {
+        try (PreparedStatement statement = createUpdateStatement(query, params)) {
             statement.executeUpdate();
             ResultSet generatedKey = statement.getGeneratedKeys();
             if (generatedKey.next()) {

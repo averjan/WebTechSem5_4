@@ -13,9 +13,9 @@ import java.util.Optional;
 public class RoleDAOImpl extends AbstractDAO<Role> implements RoleDAO {
     private static final String TABLE_NAME = "roles";
 
-    private static final String INSERT_ROLE = "INSERT INTO " + TABLE_NAME + " (role) VALUES (?)";
+    private static final String INSERT_ROLE = "INSERT INTO " + TABLE_NAME + " (Name) VALUES (?)";
 
-    private static final String SELECT_ROLE_WHERE_NAME = "SELECT * FROM " + TABLE_NAME + " WHERE role=?";
+    private static final String SELECT_ROLE_WHERE_NAME = "SELECT * FROM " + TABLE_NAME + " WHERE Name=?";
 
     public RoleDAOImpl(Connection connection) {
         super(connection, RowMapperFactory.getInstance().getRoleRowMapper(), TABLE_NAME);

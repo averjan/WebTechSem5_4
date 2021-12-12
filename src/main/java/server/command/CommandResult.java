@@ -1,28 +1,23 @@
 package server.command;
 
 public class CommandResult {
-
     private final String page;
-    private final boolean isRedirect;
+    private final ResponseType type;
 
-    private CommandResult(String page, boolean redirect) {
+    public CommandResult(String page, ResponseType type) {
         this.page = page;
-        this.isRedirect = redirect;
+        this.type = type;
     }
 
-    public static CommandResult redirect(String page) {
-        return new CommandResult(page, true);
+    public boolean isRedirect() {
+        return type == ResponseType.REDIRECT;
     }
 
-    public static CommandResult forward(String page) {
-        return new CommandResult(page, false);
+    public boolean isForward() {
+        return type == ResponseType.FORWARD;
     }
 
     public String getPage() {
         return page;
-    }
-
-    public boolean isRedirect() {
-        return isRedirect;
     }
 }

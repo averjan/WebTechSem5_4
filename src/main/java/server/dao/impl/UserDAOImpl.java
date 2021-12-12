@@ -12,11 +12,11 @@ import java.sql.Connection;
 import java.util.Optional;
 
 public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
-    private static final String TABLE_NAME = "users";
+    private static final String TABLE_NAME = "lab_schema.users";
 
-    private static final String SELECT_USER_WHERE_EMAIL_AND_PASSWORD = "SELECT * FROM " + TABLE_NAME + " WHERE email=? and password=SHA1(?)";
+    private static final String SELECT_USER_WHERE_EMAIL_AND_PASSWORD = "SELECT * FROM " + TABLE_NAME + " WHERE email=? and password_hash=?";
     private static final String SELECT_USER_WHERE_EMAIL = "SELECT * FROM " + TABLE_NAME + " WHERE email=?";
-    private static final String INSERT_USER = "INSERT INTO " + TABLE_NAME + " (email, password_hash, role_id) VALUES (?, ?, ?, ?)";
+    private static final String INSERT_USER = "INSERT INTO " + TABLE_NAME + " (email, password_hash, role_id) VALUES (?, ?, ?)";
     private static final String DELETE_USER = "DELETE FROM " + TABLE_NAME + " WHERE id=?";
 
     public UserDAOImpl(Connection connection) {

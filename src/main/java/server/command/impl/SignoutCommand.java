@@ -8,13 +8,17 @@ import server.command.context.RequestManager;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class HomeCommand implements Command {
-    private static final String PAGE = "WEB-INF/view/home.jsp";
+public class SignoutCommand implements Command  {
+    private static final String PAGE = "command=signin";
+    private static final String USER = "user";
+    private static final String ROLE = "role";
 
     @Override
     public CommandResult execute(RequestManager request, HttpServletResponse response) {
         RequestContext requestContext = request.createContext();
+        requestContext.removeSessionAttribute(USER);
+        requestContext.removeSessionAttribute(ROLE);
         request.updateRequest(requestContext);
-        return new CommandResult(PAGE, ResponseType.FORWARD);
+        return new CommandResult(PAGE, ResponseType.REDIRECT);
     }
 }

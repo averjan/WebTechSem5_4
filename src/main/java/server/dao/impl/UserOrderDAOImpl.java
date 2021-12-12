@@ -7,6 +7,7 @@ import server.exception.DAOException;
 import server.mapper.RowMapperFactory;
 
 import java.sql.Connection;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class UserOrderDAOImpl extends AbstractDAO<UserOrder> implements UserOrderDAO {
@@ -17,6 +18,7 @@ public class UserOrderDAOImpl extends AbstractDAO<UserOrder> implements UserOrde
     private static final String INSERT_USER_ORDER = "INSERT INTO " + TABLE_NAME + " (status, start_time, end_time,  user_id, apartment_id) VALUES (?, ?, ?, ?,?)";
     private static final String SELECT_USER_ORDERS_WHERE_USER_ID="SELECT * FROM " + TABLE_NAME + " WHERE user_id=?";
     private static final String SELECT_USER_ORDERS_WHERE_APARTMENT_ID="SELECT * FROM " + TABLE_NAME + " WHERE apartment_id=?";
+    private static final String SELECT_BOOKED="SELECT * FROM " + TABLE_NAME + " WHERE ((? >= start_time) & (? <= end_time)) | ((? <= start_time) & (? >= end_time)) | ((? >= start_time) & (? <= end_time)) | ((? >= start_time) & (? <= end_time))";
 
     public UserOrderDAOImpl(Connection connection) {
         super(connection, RowMapperFactory.getInstance().getUserOrderRowMapper(), TABLE_NAME);
@@ -26,6 +28,11 @@ public class UserOrderDAOImpl extends AbstractDAO<UserOrder> implements UserOrde
     public int add(UserOrder item) throws DAOException {
         return executeInsert(INSERT_USER_ORDER, item.getStatus(), item.getStartTime(),
                 item.getEndTime(), item.getUserId(), item.getApartmentId());
+    }
+
+    public boolean booked(Timestamp start, Timestamp end) throws DAOException {
+        List<UserOrder> orders = executeQuery(SELECT_BOOKED, start, end, start, end, start, start, end, end);
+        return !orders.isEmpty();
     }
 
     @Override

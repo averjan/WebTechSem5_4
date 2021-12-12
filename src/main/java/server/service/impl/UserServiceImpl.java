@@ -44,13 +44,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean register(String name, String surname, String email, String phone, String password) throws ServiceException {
-        if (name == null || surname == null ||
-                email == null || phone == null || password == null) {
+    public boolean register(String email, String password) throws ServiceException {
+        if (email == null || password == null) {
             return false;
         }
 
-        if (!(isEmailValid(email) && isUserInformationValid(name, surname,  phone))) {
+        if (!(isEmailValid(email))) {
             return false;
         }
         try {
@@ -58,6 +57,7 @@ public class UserServiceImpl implements UserService {
             if (userDao.getByEmail(email).isPresent()) {
                 return false;
             }
+
             RoleDAO roleDao = this.daoFactory.getRoleDAO();
             Optional<Role> role = roleDao.getByName(USER);
             if (!role.isPresent()) {
@@ -108,14 +108,6 @@ public class UserServiceImpl implements UserService {
     private boolean isEmailValid(String email) {
         Validator validator = (new ValidatorFactory()).getEmailValidator();
         return validator.isValid(email);
-    }
-
-    private boolean isUserInformationValid(String name, String surname, String phone) {
-        Validator nameValidator = (new ValidatorFactory()).getNameValidator();
-        Validator phoneValidator = (new ValidatorFactory()).getPhoneValidator();
-
-        return nameValidator.isValid(name) && nameValidator.isValid(surname)  &&
-                phoneValidator.isValid(phone);
     }
 
     private User createUser(String email, String password, int roleId) {

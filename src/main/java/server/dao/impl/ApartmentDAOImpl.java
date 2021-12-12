@@ -19,9 +19,9 @@ public class ApartmentDAOImpl extends AbstractDAO<Apartment> implements Apartmen
 
     private static final String SELECT_APARTMENTS_WHERE_NUMBER_OF_ROOMS = "SELECT * FROM apartments WHERE rooms_number=? ";
 
-    private static final String INSERT_APARTMENT = "INSERT INTO apartments (status, rooms_number,  apartment_number, price) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_APARTMENT = "INSERT INTO apartments (status, rooms_number, number, price) VALUES (?, ?, ?, ?)";
 
-    private static final String UPDATE_APARTMENT_WHERE_ID = "UPDATE apartments SET status=? rooms_number=? apartment_number=? price=? WHERE id=?";
+    private static final String UPDATE_APARTMENT_WHERE_ID = "UPDATE apartments SET status=? rooms_number=? number=? price=? WHERE id=?";
 
     private static final String UPDATE_APARTMENT_STATUS_WHERE_ID = "UPDATE apartments SET status=?  WHERE id=?";
 

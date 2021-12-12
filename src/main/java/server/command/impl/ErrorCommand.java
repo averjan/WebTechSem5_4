@@ -5,11 +5,12 @@ import server.command.CommandResult;
 import server.command.ResponseType;
 import server.command.context.RequestContext;
 import server.command.context.RequestManager;
+import server.exception.DAOException;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class HomeCommand implements Command {
-    private static final String PAGE = "WEB-INF/view/home.jsp";
+public class ErrorCommand implements Command {
+    private static final String PAGE = "WEB-INF/view/error.jsp";
 
     @Override
     public CommandResult execute(RequestManager request, HttpServletResponse response) {

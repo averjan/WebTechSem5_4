@@ -104,7 +104,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         int hours2 = Integer.parseInt(stringHours2);
         int minutes2 = Integer.parseInt(stringMinutes2);
         int userId=Integer.parseInt(stringUserId);
-        int apartmentId=Integer.parseInt(stringApartmentId);
+        int apartmentId = Integer.parseInt(stringApartmentId);
 
         Timestamp currentDateTime=new Timestamp(System.currentTimeMillis());
         Timestamp orderDateTime = new Timestamp(year - 1900, month - 1, day, hours, minutes, 0, 0);
@@ -117,6 +117,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         try {
             UserOrder userOrder = createUserOrder(STATUS, orderDateTime, endDateTime, userId, apartmentId);
             UserOrderDAO userOrderDao = this.daoFactory.getUserOrderDAO();
+            if (userOrderDao.booked(orderDateTime, endDateTime)) return false;
             userOrderDao.add(userOrder);
             return true;
         } catch (DAOException e) {

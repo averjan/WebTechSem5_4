@@ -1,6 +1,7 @@
 package server.command;
 
 import server.command.context.RequestManager;
+import server.exception.DAOException;
 
 import javax.servlet.http.HttpServletResponse;
 
