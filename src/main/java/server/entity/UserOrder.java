@@ -68,6 +68,6 @@ public class UserOrder implements Identifiable {
 
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 }

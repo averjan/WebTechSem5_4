@@ -27,7 +27,7 @@
     </div>
 </c:if>
 <c:if test="${sessionScope.role.name == 'admin'}">
-    <form action=${pageContext.request.contextPath}/hotel method="post">
+    <form action=${pageContext.request.contextPath}/booking method="post">
         <div class="p-3">
             <div class="row justify-content-center">
                 <table class="table table-hover">
@@ -48,32 +48,13 @@
                             <td width="150" class="text-primary">
                                 <c:set scope="request" var="informationNumberFlag" value="0"/>
                                 <c:forEach var="user" items="${users}">
-                                    <c:forEach var="information" items="${userInformation}">
-
-                                        <c:if test="${information.id == user.userInformationId && userOrder.userId==user.id
-                                            &&  informationNumberFlag == 0}">
-                                            <p><c:out value="${information.surname}"/>
-                                                <c:out value="${information.name}"/>
-                                            </p>
-                                            <c:set scope="request" var="informationNumberFlag" value="1"/>
-                                        </c:if>
-                                    </c:forEach>
+                                    <c:if test="${userOrder.userId==user.id}">
+                                        <p><c:out value="${user.email}"/>
+                                        </p>
+                                        <c:set scope="request" var="informationNumberFlag" value="1"/>
+                                    </c:if>
                                 </c:forEach>
 
-                            </td>
-                            <td class="text-primary">
-                                <c:set scope="request" var="informationNumberFlag" value="0"/>
-                                <c:forEach var="user" items="${users}">
-                                    <c:forEach var="information" items="${userInformation}">
-
-                                        <c:if test="${information.id == user.userInformationId && userOrder.userId==user.id
-                                            &&  informationNumberFlag == 0}">
-                                            <p><c:out value="${information.phone}"/>
-                                            </p>
-                                            <c:set scope="request" var="informationNumberFlag" value="1"/>
-                                        </c:if>
-                                    </c:forEach>
-                                </c:forEach>
                             </td>
                             <td><c:out value="${userOrder.startTime}"/></td>
                             <td><c:out value="${userOrder.endTime}"/></td>
@@ -83,7 +64,7 @@
                                 <c:forEach var="apartment" items="${apartments}">
                                     <c:if test="${userOrder.apartmentId == apartment.id}">
                                         <c:if test="${continueExecuting}">
-                                            <p><c:out value="${apartment.apartmentNumber}"/></p>
+                                            <p><c:out value="${apartment.number}"/></p>
                                             <c:set var="continueExecuting" scope="request" value="false"/>
                                         </c:if>
                                     </c:if>
@@ -106,7 +87,7 @@
 
                             <td class="text-active"><c:out value="${userOrder.status}"/></td>
                             <td>
-                                <button onclick="location.href = '${pageContext.request.contextPath}/hotel?command=completeUserOrder&userOrderId=${userOrder.id}'"
+                                <button onclick="location.href = '${pageContext.request.contextPath}/booking?command=confirmOrder&userOrderId=${userOrder.id}'"
                                         type="button" class="btn btn-outline-success">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                          class="bi bi-check2" viewBox="0 0 16 16">
@@ -115,7 +96,7 @@
                                 </button>
                             </td>
                             <td>
-                                <button onclick="location.href = '${pageContext.request.contextPath}/hotel?command=deleteUserOrder&userOrderId=${userOrder.id}'"
+                                <button onclick="location.href = '${pageContext.request.contextPath}/booking?command=removeUserOrder&userOrderId=${userOrder.id}'"
                                         class="btn btn-outline-danger" type="button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                          fill="currentColor"

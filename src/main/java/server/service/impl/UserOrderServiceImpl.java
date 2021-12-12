@@ -117,7 +117,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         try {
             UserOrder userOrder = createUserOrder(STATUS, orderDateTime, endDateTime, userId, apartmentId);
             UserOrderDAO userOrderDao = this.daoFactory.getUserOrderDAO();
-            if (userOrderDao.booked(orderDateTime, endDateTime)) return false;
+            if (userOrderDao.booked(apartmentId, orderDateTime, endDateTime)) return false;
             userOrderDao.add(userOrder);
             return true;
         } catch (DAOException e) {

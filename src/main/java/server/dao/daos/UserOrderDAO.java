@@ -12,5 +12,5 @@ public interface UserOrderDAO extends DAO<UserOrder> {
     List<UserOrder> getByUserId(int userId) throws DAOException;
     void updateStatusById(long id, String status) throws DAOException;
     List<UserOrder> getByApartmentId(int apartmentId) throws DAOException;
-    boolean booked(Timestamp start, Timestamp end) throws DAOException;
+    boolean booked(int number, Timestamp start, Timestamp end) throws DAOException;
 }

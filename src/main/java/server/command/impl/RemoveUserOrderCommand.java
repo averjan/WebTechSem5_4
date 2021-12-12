@@ -14,7 +14,7 @@ import server.service.services.UserOrderService;
 import javax.servlet.http.HttpServletResponse;
 
 public class RemoveUserOrderCommand implements Command {
-    private static final String PAGE = "command=viewOrders";
+    private static final String PAGE = "command=orders";
     private static final String USER_ORDER_ID = "userOrderId";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
     private static final String CANCELED = "canceled";
